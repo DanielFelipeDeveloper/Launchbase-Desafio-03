@@ -8,40 +8,36 @@
 
 {% block content %}
     <section class="about">
-        <img src="/assets/rocketseat.jpg" alt="">
+        <img src="{{about.logo}}" alt="">
 
-        <h2>Sobre a Rocketseat</h2>
+        <h2>{{about.title}}</h2>
 
         <div class="text">
-            <p align="justify">Mais do que uma plataforma de educação em tecnologia, a Rocketseat é uma comunidade incrível de programadores em busca do próximo nível 🚀
+            <p align="justify">{{about.description1}}
             </p>
 
-            <p align="justify">A Rocketseat oferece através de uma plataforma inteligente e metodologia prática, além de comunidade, eventos, conteúdo e conexão com o mercado de trabalho, todas as ferramentas que você precisa para masterizar no menor tempo possível as tecnologias mais modernas de desenvolvimento web e mobile, e dessa forma avançar para o próximo nível como programador.</p>
+            <p align="justify">{{about.description2}}</p>
 
             <div class="info">
-                <h4>Principais Tecnologias</h4>
-                <h4 class="social-nets">Redes Sociais</h4>
+                <h4>{{about.infoTechnologies}}</h4>
+                <h4 class="social-nets">{{about.infoSocials}}</h4>
             </div>
 
             <div class="contents">
 
                 <div class="images">
-                    <img src="/assets/javascript.svg" alt="">
-                    <img src="/assets/nodejs.svg" alt="">
-                    <img src="/assets/reactjs.svg" alt="">
-                    <img src="/assets/react-native.svg" alt="">
+                    {% for image in about.images %}
+                    <img src="{{image.src}}" alt="Imagem da logo : {{image.name}}">
+                    {% endfor %}
+                    
                 </div>
 
                 <div class="social">
-                    <a href="https://github.com/Rocketseat" id="github" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <a href="https://www.facebook.com/rocketseat id=" id="facebook" target="_blank">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="https://www.instagram.com/rocketseat_oficial/" id="insta" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
+                    {% for item in about.links %}
+                        <a href="{{item.url}}" id="{{item.id}}" target="_blank">
+                            <i class="{{item.class}}"></i>
+                        </a> 
+                    {% endfor %}
                 </div>
 
             </div>

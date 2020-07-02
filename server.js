@@ -1,5 +1,6 @@
 const express = require('express')
 const nunjucks = require('nunjucks')
+const courses = require('./data')
 
 const server = express()
 
@@ -8,15 +9,39 @@ server.use(express.static("public"))
 server.set("view engine", "njk")
 
 nunjucks.configure('src/views',{
-    express:server
+    express:server,
+    autoescape: false,
+    nocache: true
 })
 
 server.get('/', function(req, res) {
-    res.render("courses")
+    res.render("courses", { courses })
 })
 
 server.get('/about', function(req, res) {
-    res.render("about")
+    const about = {
+        logo: "/assets/rocketseat.jpg",
+        title : "Sobre a Rocketseat",
+        description1 : "Mais do que uma plataforma de educação em tecnologia, a Rocketseat é uma comunidade incrível de programadores em busca do próximo nível 🚀",
+        description2 : "A Rocketseat oferece através de uma plataforma inteligente e metodologia prática, além de comunidade, eventos, conteúdo e conexão com o mercado de trabalho, todas as ferramentas que você precisa para masterizar no menor tempo possível as tecnologias mais modernas de desenvolvimento web e mobile, e dessa forma avançar para o próximo nível como programador.",
+        infoTechnologies: "Principais Tecnologias",
+        infoSocials : "Redes Sociais",
+            links : [
+                { id : "github", url: "https://github.com/Rocketseat", class: "fab fa-github"},
+                { id : "facebook", url: "https://www.facebook.com/rocketseat", class: "fab fa-facebook"},
+                { id: "insta", url: "https://www.instagram.com/rocketseat_oficial", class: "fab fa-instagram"} 
+            ],
+            images : [ 
+                { src: "/assets/javascript.svg", name: "JavaScript" },
+                { src: "/assets/nodejs.svg", name: "Node JS" },
+                { src: "/assets/reactjs.svg", name: "React JS" },
+                { src: "/assets/react-native.svg", name: "React Native" }            
+            ]
+    }
+
+    
+
+    res.render("about", { about })
 })
 
 server.use(function(req, res) {
