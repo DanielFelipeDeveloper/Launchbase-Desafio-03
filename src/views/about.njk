@@ -1,5 +1,4 @@
 {% extends "layout.njk" %}
-
 {% block head %}
     <title>Rocketseat - Sobre</title>
     <link rel="stylesheet" href="/styles/about.css">
@@ -27,16 +26,16 @@
 
                 <div class="images">
                     {% for image in about.images %}
-                    <img src="{{image.src}}" alt="Imagem da logo : {{image.name}}">
+                        <img src="{{image.src}}" alt="Imagem da logo : {{image.name}}">
                     {% endfor %}
-                    
+
                 </div>
 
                 <div class="social">
                     {% for item in about.links %}
                         <a href="{{item.url}}" id="{{item.id}}" target="_blank">
                             <i class="{{item.class}}"></i>
-                        </a> 
+                        </a>
                     {% endfor %}
                 </div>
 

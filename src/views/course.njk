@@ -1,0 +1,21 @@
+{%extends "layout.njk"%}
+
+{% block head %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <section class="course">
+        <div class="card" id="{{course.id}}">
+            <div class="arrow">
+                <a href="/">
+                    <span class="material-icons" id="{{course.id}}">
+                        arrow_back
+                    </span>
+                </a>
+            </div>
+            <div class="course-iframe">
+                <iframe src="https://www.rocketseat.com.br/{{course.id}}" frameborder="0"></iframe>
+            </div>
+        </div>
+    {% endblock %}
